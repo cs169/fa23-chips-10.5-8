@@ -1,0 +1,24 @@
+project:
+  name: 'CS169-fa23-08'
+  owner: 'fa23'
+  teamId: '08'
+  identities: {}
+  notifications:
+    email: 'coccoo.ma@berkeley.edu'
+  members:
+    member1:
+      name: 'Coco'
+      surname: 'Ma' 
+      githubUsername: 'coccooma'
+    member2:
+      name: 'Tracy'
+      surname: 'Ye' 
+      githubUsername: 'tracyye029'
+    member3:
+      name: 'Winston'
+      surname: 'Liu' 
+      githubUsername: 'l-winston'
+    member4:
+      name: 'Brevin'
+      surname: 'Smider' 
+      githubUsername: 'bsmider'
