@@ -17,22 +17,35 @@ class Representative < ApplicationRecord
         end
       end
 
-      address = official.address.first
-      puts address
+      address = official.address
 
-      rep = Representative.find_or_initialize_by!({ 
+      if address.nil?
+        street = ''
+        city = ''
+        state = ''
+        zip = ''
+      else
+        address = address.first
+        street = address.line1
+        city = address.city
+        state = address.state
+        zip = address.zip
+      end
+
+      rep = Representative.find_or_initialize_by({ 
         name: official.name, 
         ocdid: ocdid_temp,
         title: title_temp, 
-        street: address.line1, 
-        city: address.city, 
-        state: address.state, 
-        zip: address.zip, 
+        street: street, 
+        city: city, 
+        state: state, 
+        zip: zip, 
         political_party: official.party, 
-        photo: official.urls[1] 
+        photo: official.photo_url
       })
 
       rep.save if rep.new_record?
+      reps.push(rep)
     end
 
     reps
