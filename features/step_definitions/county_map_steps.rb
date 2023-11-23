@@ -2,6 +2,7 @@
 
 Given(/^I navigate to the "([A-Z]{2})" state map page$/) do |state|
   visit "/state/#{state}"
+  print(page.body)
 end
 
 When('I click on the "Counties in California" button') do
