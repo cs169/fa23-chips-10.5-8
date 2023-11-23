@@ -33,9 +33,8 @@ jobs:
       - run: npm install -g yarn@1.19.1
       - run: bundle install
       - run: yarn install
-      - run: bundle exec rake db:setup
-      - run: bundle exec rake db:migrate RAILS_ENV=test
+      - run: bundle exec rake db:create RAILS_ENV=test
+      - run: bundle exec rake db:schema:load RAILS_ENV=test
       - run: bundle exec rake db:seed RAILS_ENV=test
-      - run: bundle exec rake db:test:prepare
       - run: bundle exec rspec
       - run: bundle exec cucumber
