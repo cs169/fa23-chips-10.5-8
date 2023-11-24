@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe NewsItem, type: :model do
@@ -11,7 +13,7 @@ RSpec.describe NewsItem, type: :model do
       end
 
       it 'returns nil if representative_id has no news item' do
-        r = Representative.create(name: 'Brevin', ocdid: '01', title: 'Mayor')
+        Representative.create(name: 'Brevin', ocdid: '01', title: 'Mayor')
         found_ni = described_class.find_for(01)
         expect(found_ni).to be_nil
       end

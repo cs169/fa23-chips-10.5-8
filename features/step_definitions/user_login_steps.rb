@@ -1,10 +1,15 @@
+# frozen_string_literal: true
+
 When(/^Signed in with (.+)$/) do |prov|
   OmniAuth.config.test_mode = true
 
   user = {
-    'info' => {'name'  => 'Brevin Smider', 'email' => 'brevin@smider.com'},
-    'uid' => '1',
-    'provider' => ''
+    'info' => {
+      'name'  => 'Brevin Smider',
+      'email' => 'brevin@smider.com'
+    },
+    'uid'       => '1',
+    'provider'  => ''
   }
 
   if prov.eql?('GitHub')
