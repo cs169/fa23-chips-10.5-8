@@ -32,45 +32,27 @@ RSpec.describe Representative, type: :model do
       expect(described_class.count).to eq(1)
     end
 
-    context 'when creates or updates Representative records with the correct' do
-      it 'street and city parameters' do
+    shared_examples 'creates or updates Representative records with correct parameters' do |attribute, expected_value|
+      it "#{attribute} parameter" do
         @representatives.each do |representative|
           expect(representative).to be_persisted
-          expect(representative.street).to eq('123 Main St')
-          expect(representative.city).to eq('Los Angeles')
+          expect(representative.public_send(attribute)).to eq(expected_value)
         end
       end
+    end
 
-      it 'name and ocdid parameters' do
-        @representatives.each do |representative|
-          expect(representative).to be_persisted
-          expect(representative.name).to eq('Karen Bass')
-          expect(representative.ocdid).to eq('ocd-division/country:us/state:ca/city:los_angeles')
-        end
-      end
-
-      it 'zip and party parameters' do
-        @representatives.each do |representative|
-          expect(representative).to be_persisted
-          expect(representative.zip).to eq('90001')
-          expect(representative.political_party).to eq('Democrat')
-        end
-      end
-
-      it 'state and title parameters' do
-        @representatives.each do |representative|
-          expect(representative).to be_persisted
-          expect(representative.state).to eq('CA')
-          expect(representative.title).to eq('Mayor')
-        end
-      end
-
-      it 'picture parameter' do
-        @representatives.each do |representative|
-          expect(representative).to be_persisted
-          expect(representative.photo).to eq('http://example.com/karen_bass.jpg')
-        end
-      end
+    context 'when creates or updates Representative records with correct' do
+      include_examples 'creates or updates Representative records with correct parameters', :street, '123 Main St'
+      include_examples 'creates or updates Representative records with correct parameters', :city, 'Los Angeles'
+      include_examples 'creates or updates Representative records with correct parameters', :name, 'Karen Bass'
+      include_examples 'creates or updates Representative records with correct parameters', :ocdid,
+                       'ocd-division/country:us/state:ca/city:los_angeles'
+      include_examples 'creates or updates Representative records with correct parameters', :zip, '90001'
+      include_examples 'creates or updates Representative records with correct parameters', :political_party,
+                       'Democrat'
+      include_examples 'creates or updates Representative records with correct parameters', :state, 'CA'
+      include_examples 'creates or updates Representative records with correct parameters', :title, 'Mayor'
+      include_examples 'creates or updates Representative records with correct parameters', :photo, 'http://example.com/karen_bass.jpg'
     end
   end
 end
