@@ -11,5 +11,4 @@ Scenario: User selects Los Angeles County to view its representatives
   When I click on the "View" link for the county with county name "Los Angeles County"
   Then I should be taken to the search page for county "Los Angeles County"
   Then I should see a list of representatives
-  
 
