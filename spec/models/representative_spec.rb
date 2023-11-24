@@ -32,42 +32,44 @@ RSpec.describe Representative, type: :model do
       expect(described_class.count).to eq(1)
     end
 
-    it 'creates or updates Representative records with the correct street and city parameters' do
-      @representatives.each do |representative|
-        expect(representative).to be_persisted
-        expect(representative.street).to eq('123 Main St')
-        expect(representative.city).to eq('Los Angeles')
+    context 'when creates or updates Representative records with the correct' do
+      it 'street and city parameters' do
+        @representatives.each do |representative|
+          expect(representative).to be_persisted
+          expect(representative.street).to eq('123 Main St')
+          expect(representative.city).to eq('Los Angeles')
+        end
       end
-    end
 
-    it 'creates or updates Representative records with the correct name and ocdid parameters' do
-      @representatives.each do |representative|
-        expect(representative).to be_persisted
-        expect(representative.name).to eq('Karen Bass')
-        expect(representative.ocdid).to eq('ocd-division/country:us/state:ca/city:los_angeles')
+      it 'name and ocdid parameters' do
+        @representatives.each do |representative|
+          expect(representative).to be_persisted
+          expect(representative.name).to eq('Karen Bass')
+          expect(representative.ocdid).to eq('ocd-division/country:us/state:ca/city:los_angeles')
+        end
       end
-    end
 
-    it 'creates or updates Representative records with the correct zip and party parameters' do
-      @representatives.each do |representative|
-        expect(representative).to be_persisted
-        expect(representative.zip).to eq('90001')
-        expect(representative.political_party).to eq('Democrat')
+      it 'zip and party parameters' do
+        @representatives.each do |representative|
+          expect(representative).to be_persisted
+          expect(representative.zip).to eq('90001')
+          expect(representative.political_party).to eq('Democrat')
+        end
       end
-    end
 
-    it 'creates or updates Representative records with the correct state and title parameters' do
-      @representatives.each do |representative|
-        expect(representative).to be_persisted
-        expect(representative.state).to eq('CA')
-        expect(representative.title).to eq('Mayor')
+      it 'state and title parameters' do
+        @representatives.each do |representative|
+          expect(representative).to be_persisted
+          expect(representative.state).to eq('CA')
+          expect(representative.title).to eq('Mayor')
+        end
       end
-    end
 
-    it 'creates or updates Representative records with the correct picture parameters' do
-      @representatives.each do |representative|
-        expect(representative).to be_persisted
-        expect(representative.photo).to eq('http://example.com/karen_bass.jpg')
+      it 'picture parameter' do
+        @representatives.each do |representative|
+          expect(representative).to be_persisted
+          expect(representative.photo).to eq('http://example.com/karen_bass.jpg')
+        end
       end
     end
   end
