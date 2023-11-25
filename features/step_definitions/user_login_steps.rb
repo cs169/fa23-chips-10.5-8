@@ -4,17 +4,18 @@ When(/^Signed in with (.+)$/) do |prov|
   OmniAuth.config.test_mode = true
 
   user = {
-    'info' => {
+    'info'     => {
       'name'  => 'Brevin Smider',
       'email' => 'brevin@smider.com'
     },
-    'uid'       => '1',
-    'provider'  => ''
+    'uid'      => '1',
+    'provider' => ''
   }
 
-  if prov.eql?('GitHub')
+  case prov
+  when 'GitHub'
     user[:provider] = 'github'
-  elsif prov.eql?('Google')
+  when 'Google'
     user[:provider] = 'google_oauth2'
   end
 

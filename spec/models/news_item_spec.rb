@@ -14,7 +14,7 @@ RSpec.describe NewsItem, type: :model do
 
       it 'returns nil if representative_id has no news item' do
         Representative.create(name: 'Brevin', ocdid: '01', title: 'Mayor')
-        found_ni = described_class.find_for(01)
+        found_ni = described_class.find_for(0o1)
         expect(found_ni).to be_nil
       end
     end
