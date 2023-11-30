@@ -1,6 +1,29 @@
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
         %h1.text-center Search Campaign Finances
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        = form_tag campaign_finances_path, method: :get do
+            .form-group.row
+                .col-md-4
+                    %label.col-form-label
+                        Select Election Cycle:
+                .col-md-6
+                    = select_tag :cycle, options_for_select(%w[2010 2012 2014 2016 2018 2020]), class: 'form-control'
+
+            .form-group.row
+                .col-md-4
+                    %label.col-form-label
+                        Select Category:
+                .col-md-6
+                    = select_tag :category, options_for_select(['Candidate Loan', 'Contribution Total',
+                    'Debts Owed', 'Disbursements Total', 'End Cash', 'Individual Total', 'PAC Total',
+                    'Receipts Total', 'Refund Total']), class: 'form-control'
+
+            .actions
+                = submit_tag 'Search', class: 'btn btn-primary'
+
+
+
 
 
 
