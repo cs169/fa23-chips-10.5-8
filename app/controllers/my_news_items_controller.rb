@@ -52,8 +52,12 @@ class MyNewsItemsController < SessionController
     @news_item = NewsItem.find(params[:id])
   end
 
+  def set_issues_list
+    @issues_list = NewsItem::VALID_ISSUES
+  end
+
   # Only allow a list of trusted parameters through.
   def news_item_params
-    params.require(:news_item).permit(:news, :title, :description, :link, :representative_id)
+    params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue)
   end
 end
