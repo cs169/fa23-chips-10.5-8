@@ -20,4 +20,22 @@ RSpec.describe NewsItem, type: :model do
       end
     end
   end
+
+  describe 'constants' do
+    before { @r = Representative.create(name: 'Brevin', ocdid: '01', title: 'Mayor') }
+
+    it 'is valid with valid attributes' do
+      ni = described_class.create(title: 'News Item', link: 'https://youtube.com', representative: @r,
+                                  issue: 'Abortion')
+
+      expect(ni).to be_valid
+    end
+
+    it 'is invalid with invalid attributes' do
+      ni = described_class.create(title: 'News Item', link: 'https://youtube.com', representative: @r,
+                                  issue: 'Climate')
+
+      expect(ni).not_to be_valid
+    end
+  end
 end
