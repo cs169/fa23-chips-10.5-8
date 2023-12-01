@@ -31,7 +31,7 @@ RSpec.describe NewsItem, type: :model do
       expect(ni).to be_valid
     end
 
-    it 'is invalid with invalid attributes' do
+    it 'is invalid with attributes not in the list' do
       ni = described_class.create(title: 'News Item', link: 'https://youtube.com', representative: @r,
                                   issue: 'Climate')
 
