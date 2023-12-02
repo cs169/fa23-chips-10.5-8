@@ -15,10 +15,12 @@
                         = item[:title]
                         - if current_page? item[:link]
                             %span.sr-only (current)
-            %li.nav-item.py-1.text-center{ class: ApplicationHelper.active(controller_name, campaign_finances_path) }
-                %a.nav-link.text-white{ href: campaign_finances_path }
+            %li.nav-item.py-1.text-center{
+              class: ApplicationHelper.active(controller_name, search_campaign_finances_path)
+            }
+                %a.nav-link.text-white{ href: search_campaign_finances_path }
                     Campaign Finances
-                    - if current_page? campaign_finances_path
+                    - if current_page? search_campaign_finances_path
                         %span.sr-only (current)
             - if authenticated
                 %li.nav-item.py-1.text-center{ class: ApplicationHelper.active(controller_name, user_profile_path) }
