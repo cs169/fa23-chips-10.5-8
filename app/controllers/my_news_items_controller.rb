@@ -13,10 +13,10 @@ class MyNewsItemsController < SessionController
   def edit; end
 
   def create
-    puts news_item_params
+    Rails.logger.debug news_item_params
     @news_item = NewsItem.new(news_item_params)
     if @news_item.save
-      puts @news_item.representative_id
+      Rails.logger.debug @news_item.representative_id
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
