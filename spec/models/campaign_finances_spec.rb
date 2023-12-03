@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 require 'spec_helper'
+require 'support/campaign_finances_request_helper'
 
 describe CampaignFinances do
   describe 'searching ProPublica by keyword' do
@@ -47,6 +48,18 @@ describe CampaignFinances do
       results = described_class.find_in_propublica('2020', 'pac-total')
       expect(results).not_to be_empty
       expect(results.first[:name]).to eq('PERDUE, DAVID')
+    end
+
+    it 'returns an empty array when results is nil' do
+      stub_propublica_api(my_json_stub.merge(results: nil))
+      results = described_class.find_in_propublica('2020', 'pac-total')
+      expect(results).to eq([])
+    end
+
+    it 'returns an empty array when results is empty' do
+      stub_propublica_api(my_json_stub.merge(results: []))
+      results = described_class.find_in_propublica('2020', 'pac-total')
+      expect(results).to eq([])
     end
   end
 end

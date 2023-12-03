@@ -27,7 +27,27 @@
 
             .actions
                 = submit_tag 'Search', class: 'btn btn-primary'
-
+- if @representatives.present?
+    .row.mt-4
+        .col-12
+            %table.table
+                %thead
+                    %tr
+                        %th Name
+                        %th Party
+                        %th State
+                        %th Total From Individuals
+                        %th Total From Pacs
+                        %th Total Contributions
+                %tbody
+                    - @representatives.each do |representative|
+                        %tr
+                            %td= representative[:name]
+                            %td= representative[:party]
+                            %td= display_state(representative[:state])
+                            %td= representative[:total_from_individuals]
+                            %td= representative[:total_from_pacs]
+                            %td= representative[:total_contributions]
 
 
 
