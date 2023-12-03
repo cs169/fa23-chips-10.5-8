@@ -7,7 +7,6 @@ class CampaignFinances < ApplicationRecord
       raise "The response from ProPublica API failed: #{response.status}" unless response.success?
 
       data = JSON.parse(response.body)
-      Rails.logger.debug { "Parsed JSON data: #{data.inspect}" }
       if data['results'].blank?
         []
       else
@@ -30,7 +29,6 @@ class CampaignFinances < ApplicationRecord
       base_url = 'https://api.propublica.org/campaign-finance/v1/'
       url = "#{base_url}#{cycle}/candidates/leaders/#{category}.json"
       api_key = Rails.application.credentials[:PROPUBLICA_API_KEY]
-      Rails.logger.debug { "API Key: #{api_key}" }
       Faraday.get(url) do |req|
         req.headers['X-API-Key'] = api_key
       end
