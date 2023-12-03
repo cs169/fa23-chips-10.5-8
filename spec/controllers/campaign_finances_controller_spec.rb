@@ -26,14 +26,14 @@ describe CampaignFinancesController do
     end
 
     it 'calls the model method that performs ProPublica search' do
-      get :search, params: { cycle: '2010', category: 'PAC Total' }
-      expect(CampaignFinances).to have_received(:find_in_propublica).with('2010', 'PAC Total')
+      get :search, params: { cycle: '2020', category: 'PAC Total' }
+      expect(CampaignFinances).to have_received(:find_in_propublica).with('2020', 'PAC Total')
     end
 
     describe 'after valid search' do
       before do
         allow(CampaignFinances).to receive(:find_in_propublica).and_return(@fake_results)
-        get :search, params: { cycle: '2010', category: 'PAC Total' }
+        get :search, params: { cycle: '2020', category: 'PAC Total' }
       end
 
       it 'selects the Search Results template for rendering' do
