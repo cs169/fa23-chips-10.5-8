@@ -22,7 +22,7 @@
                     Campaign Finances
                     - if current_page? search_campaign_finances_path
                         %span.sr-only (current)
-            - if authenticated
+            - if local_assigns[:authenticated]
                 %li.nav-item.py-1.text-center{ class: ApplicationHelper.active(controller_name, user_profile_path) }
                     %a.nav-link.text-white{ href: user_profile_path }
                         Profile
