@@ -13,10 +13,8 @@ class MyNewsItemsController < SessionController
   def edit; end
 
   def create
-    Rails.logger.debug news_item_params
     @news_item = NewsItem.new(news_item_params)
     if @news_item.save
-      Rails.logger.debug @news_item.representative_id
       redirect_to representative_news_item_path(@representative, @news_item),
                   notice: 'News item was successfully created.'
     else
@@ -48,7 +46,7 @@ class MyNewsItemsController < SessionController
   end
 
   def set_representatives_list
-    @representatives_list = Representative.all.order(:id).map { |r| [r.name, r.id] }
+    @representatives_list = Representative.all.map { |r| [r.name, r.id] }
   end
 
   def set_news_item
